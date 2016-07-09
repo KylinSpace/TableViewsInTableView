@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE8F5FD51D311B7400A2FDBD /* KylinOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F5FD41D311B7400A2FDBD /* KylinOneViewController.m */; };
+		CE8F5FD81D311B9000A2FDBD /* KylinTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F5FD71D311B9000A2FDBD /* KylinTwoViewController.m */; };
+		CE8F5FDB1D311BA100A2FDBD /* KylinThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F5FDA1D311BA100A2FDBD /* KylinThreeViewController.m */; };
+		CE8F5FDE1D311BAE00A2FDBD /* KylinFourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8F5FDD1D311BAE00A2FDBD /* KylinFourViewController.m */; };
 		CEEDC7691D2FCE9C006A820D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDC7681D2FCE9C006A820D /* main.m */; };
 		CEEDC76C1D2FCE9C006A820D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEDC76B1D2FCE9C006A820D /* AppDelegate.m */; };
 		CEEDC7741D2FCE9C006A820D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEDC7731D2FCE9C006A820D /* Assets.xcassets */; };
@@ -47,6 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE8F5FD31D311B7400A2FDBD /* KylinOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KylinOneViewController.h; sourceTree = "<group>"; };
+		CE8F5FD41D311B7400A2FDBD /* KylinOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KylinOneViewController.m; sourceTree = "<group>"; };
+		CE8F5FD61D311B9000A2FDBD /* KylinTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KylinTwoViewController.h; sourceTree = "<group>"; };
+		CE8F5FD71D311B9000A2FDBD /* KylinTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KylinTwoViewController.m; sourceTree = "<group>"; };
+		CE8F5FD91D311BA100A2FDBD /* KylinThreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KylinThreeViewController.h; sourceTree = "<group>"; };
+		CE8F5FDA1D311BA100A2FDBD /* KylinThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KylinThreeViewController.m; sourceTree = "<group>"; };
+		CE8F5FDC1D311BAE00A2FDBD /* KylinFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KylinFourViewController.h; sourceTree = "<group>"; };
+		CE8F5FDD1D311BAE00A2FDBD /* KylinFourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KylinFourViewController.m; sourceTree = "<group>"; };
 		CEEDC7641D2FCE9C006A820D /* TableViewsInTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewsInTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEDC7681D2FCE9C006A820D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEEDC76A1D2FCE9C006A820D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +131,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE8F5FD21D311B1600A2FDBD /* titleViews */ = {
+			isa = PBXGroup;
+			children = (
+				CE8F5FD31D311B7400A2FDBD /* KylinOneViewController.h */,
+				CE8F5FD41D311B7400A2FDBD /* KylinOneViewController.m */,
+				CE8F5FD61D311B9000A2FDBD /* KylinTwoViewController.h */,
+				CE8F5FD71D311B9000A2FDBD /* KylinTwoViewController.m */,
+				CE8F5FD91D311BA100A2FDBD /* KylinThreeViewController.h */,
+				CE8F5FDA1D311BA100A2FDBD /* KylinThreeViewController.m */,
+				CE8F5FDC1D311BAE00A2FDBD /* KylinFourViewController.h */,
+				CE8F5FDD1D311BAE00A2FDBD /* KylinFourViewController.m */,
+			);
+			name = titleViews;
+			sourceTree = "<group>";
+		};
 		CEEDC75B1D2FCE9C006A820D = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +169,7 @@
 		CEEDC7661D2FCE9C006A820D /* TableViewsInTableView */ = {
 			isa = PBXGroup;
 			children = (
+				CE8F5FD21D311B1600A2FDBD /* titleViews */,
 				CEEDC79A1D2FD5D6006A820D /* KylinMainViewController.h */,
 				CEEDC79B1D2FD5D6006A820D /* KylinMainViewController.m */,
 				CEEDC7C61D2FD99D006A820D /* KylinScrollView.h */,
@@ -280,6 +308,7 @@
 		CEEDC75C1D2FCE9C006A820D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = Kylin;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Kylin;
 				TargetAttributes = {
@@ -352,16 +381,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEEDC7C01D2FD82F006A820D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				CE8F5FDB1D311BA100A2FDBD /* KylinThreeViewController.m in Sources */,
 				CEEDC7BE1D2FD82F006A820D /* MASViewConstraint.m in Sources */,
 				CEEDC7B91D2FD82F006A820D /* MASCompositeConstraint.m in Sources */,
 				CEEDC7C81D2FD99D006A820D /* KylinScrollView.m in Sources */,
 				CEEDC7BF1D2FD82F006A820D /* NSArray+MASAdditions.m in Sources */,
 				CEEDC79C1D2FD5D6006A820D /* KylinMainViewController.m in Sources */,
 				CEEDC76C1D2FCE9C006A820D /* AppDelegate.m in Sources */,
+				CE8F5FDE1D311BAE00A2FDBD /* KylinFourViewController.m in Sources */,
 				CEEDC7BC1D2FD82F006A820D /* MASLayoutConstraint.m in Sources */,
+				CE8F5FD81D311B9000A2FDBD /* KylinTwoViewController.m in Sources */,
 				CEEDC7691D2FCE9C006A820D /* main.m in Sources */,
 				CEEDC7C21D2FD82F006A820D /* ViewController+MASAdditions.m in Sources */,
 				CEEDC7C11D2FD82F006A820D /* View+MASAdditions.m in Sources */,
+				CE8F5FD51D311B7400A2FDBD /* KylinOneViewController.m in Sources */,
 				CEEDC7BD1D2FD82F006A820D /* MASViewAttribute.m in Sources */,
 				CEEDC7BA1D2FD82F006A820D /* MASConstraint.m in Sources */,
 				CEEDC7CB1D2FFD64006A820D /* UIView+Kylin.m in Sources */,

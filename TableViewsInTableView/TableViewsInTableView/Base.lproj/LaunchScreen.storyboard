@@ -14,14 +14,47 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kylinLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-7D-S23">
+                                <rect key="frame" x="138" y="234" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="QFG-vd-hcA"/>
+                                    <constraint firstAttribute="height" constant="100" id="agg-dh-Uhf"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gitHub  KylinSpace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cH7-g8-i6D">
+                                <rect key="frame" x="116" y="384" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="新浪微博   火柴大男人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvN-nQ-G0l">
+                                <rect key="frame" x="105" y="435" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cH7-g8-i6D" firstAttribute="top" secondItem="Bnf-7D-S23" secondAttribute="bottom" constant="50" id="EOh-1i-8O1"/>
+                            <constraint firstItem="cH7-g8-i6D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EVt-g5-6Ul"/>
+                            <constraint firstItem="XvN-nQ-G0l" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="T69-70-bFu"/>
+                            <constraint firstItem="Bnf-7D-S23" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="VfT-Hx-Zv4"/>
+                            <constraint firstItem="Bnf-7D-S23" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="hQU-xv-4D8"/>
+                            <constraint firstItem="XvN-nQ-G0l" firstAttribute="top" secondItem="cH7-g8-i6D" secondAttribute="bottom" constant="30" id="r1y-w7-hnF"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="213" y="379"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="kylinLogo" width="189" height="194"/>
+    </resources>
 </document>

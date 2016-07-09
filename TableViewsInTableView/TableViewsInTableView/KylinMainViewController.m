@@ -10,9 +10,17 @@
 #import "KylinScrollView.h"
 #import "Masonry.h"
 #import "UIView+Kylin.h"
-@interface KylinMainViewController ()<UIScrollViewDelegate>
+#import "KylinOneViewController.h"
+#import "KylinTwoViewController.h"
+#import "KylinThreeViewController.h"
+#import "KylinFourViewController.h"
+
+@interface KylinMainViewController ()<UIScrollViewDelegate,KylinOneViewControllerDelegate,KylinTwoViewControllerDelegate,KylinThreeViewControllerDelegate,KylinFourViewControllerDelegate>
 /**标题数组*/
 @property(nonatomic,strong)NSArray *titleArray;
+
+/**头部视图*/
+@property(nonatomic,weak)UIView *headerView;
 
 /**标题view*/
 @property(nonatomic,weak)UIScrollView *titleView;
@@ -24,6 +32,16 @@
 @property(nonatomic,strong)UIButton *currentSelectedBtn;
 /**下划线*/
 @property(nonatomic,weak)UIView *selectedUnderLine;
+
+/**one*/
+@property(nonatomic,weak)KylinOneViewController *oneVc;
+/**two*/
+@property(nonatomic,weak)KylinTwoViewController *twoVc;
+/**three*/
+@property(nonatomic,weak)KylinThreeViewController *threeVc;
+/**four*/
+@property(nonatomic,weak)KylinFourViewController *fourVc;
+
 @end
 //屏幕宽度
 #define kScreenW [UIScreen mainScreen].bounds.size.width
@@ -32,15 +50,16 @@
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
 static CGFloat const NavH = 64;
-static CGFloat const HeaderH = 100;
+static CGFloat const HeaderH = 150;
 static CGFloat const TitleViewH = 50;
 static CGFloat const UnderLineH = 3;
+static CGFloat const OffsetY = -200;
 @implementation KylinMainViewController
 
 #pragma mark- 懒加载属性
 - (NSArray *)titleArray{
     if (!_titleArray) {
-        _titleArray = @[@"科技",@"热点",@"娱乐",@"体育",@"NEWS"];
+        _titleArray = @[@"科技",@"热点",@"娱乐",@"体育"];
     }
     return _titleArray;
 }
@@ -48,14 +67,19 @@ static CGFloat const UnderLineH = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationItem.title = @"TINT";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    // 添加子控制器
+    [self setupChildViewController];
     // 布局子控制排列样式
     [self setupChildViews];
     
     // 添加标题栏内容
     [self setupTitleView];
     
+    [self addChildViewInContentView:0];
+
     // 添加标题栏下划线
     [self setupUnderLine];
     
@@ -67,6 +91,7 @@ static CGFloat const UnderLineH = 3;
     
     // 头部视图
     UIView *headerView = [[UIView alloc]init];
+    _headerView = headerView;
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.image = [UIImage imageNamed:@"bueaty2.jpg"];
@@ -79,7 +104,6 @@ static CGFloat const UnderLineH = 3;
     
     // 内容的view
     KylinScrollView *contentView = [[KylinScrollView alloc]init];
-    contentView.backgroundColor = [UIColor lightGrayColor];
     _contentView = contentView;
     contentView.pagingEnabled = YES;
     contentView.bounces = NO;
@@ -112,7 +136,7 @@ static CGFloat const UnderLineH = 3;
         make.top.equalTo(titleView.mas_bottom);
         make.width.equalTo(@(kScreenW));
         make.left.right.equalTo(self.view);
-        make.height.equalTo(@(kScreenH - HeaderH));
+        make.height.equalTo(@(kScreenH - NavH));
     }];
     
     
@@ -171,6 +195,38 @@ static CGFloat const UnderLineH = 3;
     self.selectedUnderLine.KCenterX = selectButton.KCenterX;
     
 }
+
+// 添加子控制器
+- (void)setupChildViewController{
+    
+    KylinOneViewController *oneVc = [[KylinOneViewController alloc]init];
+    _oneVc = oneVc;
+    oneVc.delegate = self;
+    [self addChildViewController:oneVc];
+    
+    KylinTwoViewController *twoVc = [[KylinTwoViewController alloc]init];
+    _twoVc = twoVc;
+    twoVc.delegate = self;
+    [self addChildViewController:twoVc];
+    
+    KylinThreeViewController *threeVc = [[KylinThreeViewController alloc]init];
+    _threeVc = threeVc;
+    threeVc.delegate = self;
+    [self addChildViewController:threeVc];
+    
+    KylinFourViewController *fourVc = [[KylinFourViewController alloc]init];
+    _fourVc = fourVc;
+    fourVc.delegate = self;
+    [self addChildViewController:fourVc];
+}
+
+// 添加相应的控制器的view到内容视图中
+- (void)addChildViewInContentView:(NSInteger)index{
+    
+    UIViewController *childView = self.childViewControllers[index];
+    [self.contentView addSubview:childView.view];
+    childView.view.frame = CGRectMake(index * kScreenW, OffsetY, kScreenW, kScreenH + 85);
+}
 #pragma mark- 点击事件
 - (void)titleBtnClick:(UIButton *)button{
     
@@ -186,6 +242,101 @@ static CGFloat const UnderLineH = 3;
     }completion:nil];
     
     self.contentView.contentOffset = CGPointMake(index * kScreenW, 0);
+    
+    [self addChildViewInContentView:index];
+    
+    _oneVc.tableView.scrollEnabled = YES;
+    _twoVc.tableView.scrollEnabled = YES;
+    _threeVc.tableView.scrollEnabled = YES;
+    _fourVc.tableView.scrollEnabled = YES;
+
+}
+
+#pragma mark- TableViewScrollDelegate
+/**
+ *  通过代理接收每个子控制器的滚动Y值
+ *
+ *  @param scrollY 滚动了多少Y值
+ */
+- (void)KylinOneViewTableViewDidScroll:(CGFloat)scrollY{
+    [self KylinScrollToChangeHeaderViewHeight:scrollY];
+}
+
+- (void)KylinTwoViewTableViewDidScroll:(CGFloat)scrollY{
+    [self KylinScrollToChangeHeaderViewHeight:scrollY];
+
+}
+- (void)KylinThreeViewTableViewDidScroll:(CGFloat)scrollY{
+    [self KylinScrollToChangeHeaderViewHeight:scrollY];
+
+}
+- (void)KylinFourViewTableViewDidScroll:(CGFloat)scrollY{
+    [self KylinScrollToChangeHeaderViewHeight:scrollY];
+ 
+}
+
+// 动态计算滚动的Y值
+- (void)KylinScrollToChangeHeaderViewHeight:(CGFloat)scrollY{
+    CGFloat offsetY = scrollY - OffsetY;
+    CGFloat height = HeaderH - offsetY;
+    
+    if (height > HeaderH) {
+        height = HeaderH;
+    }
+    
+    if (height < 0) {
+        height = 0;
+    }
+    
+   [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+       make.top.equalTo(self.view).offset(NavH);
+       make.left.right.equalTo(self.view);
+       make.height.equalTo(@(height));
+   }];
+    
+    [self.titleView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_headerView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(TitleViewH));
+    }];
+}
+#pragma mark- ScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if (scrollView == self.contentView) {
+        _oneVc.tableView.scrollEnabled = NO;
+        _twoVc.tableView.scrollEnabled = NO;
+        _threeVc.tableView.scrollEnabled = NO;
+        _fourVc.tableView.scrollEnabled = NO;
+        
+    }
+
+}
+// 滚动切换控制器
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (scrollView == self.contentView) {
+        _oneVc.tableView.scrollEnabled = YES;
+        _twoVc.tableView.scrollEnabled = YES;
+        _threeVc.tableView.scrollEnabled = YES;
+        _fourVc.tableView.scrollEnabled = YES;
+
+    }
+    NSInteger index = scrollView.contentOffset.x / kScreenW;
+    
+    NSMutableArray *buttonArray = [NSMutableArray array];
+    
+    for (NSInteger i = 0; i < self.titleView.subviews.count; i ++) {
+        UIView *button = self.titleView.subviews[i];
+        
+        if (button.class == [UIButton buttonWithType:UIButtonTypeCustom].class) {
+            [buttonArray addObject:button];
+        }
+    }
+    
+    UIButton *button = buttonArray[index];
+    
+    [self titleBtnClick:button];
     
 }
 @end
