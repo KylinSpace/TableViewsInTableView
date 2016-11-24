@@ -226,6 +226,13 @@ static CGFloat const OffsetY = -200;
     UIViewController *childView = self.childViewControllers[index];
     [self.contentView addSubview:childView.view];
     childView.view.frame = CGRectMake(index * kScreenW, OffsetY, kScreenW, kScreenH + 85);
+    
+    // 取出要跳转的view
+    KylinTwoViewController *twovc = (KylinTwoViewController *)childView;
+    
+    // 跳转时滚动到当前view 的offsetY位置
+    [self KylinScrollToChangeHeaderViewHeight:twovc.tableView.contentOffset.y];
+//    NSLog(@"第二个控制制 OFFSETY ----//%f",twovc.tableView.contentOffset.y);
 }
 #pragma mark- 点击事件
 - (void)titleBtnClick:(UIButton *)button{
@@ -277,6 +284,8 @@ static CGFloat const OffsetY = -200;
 
 // 动态计算滚动的Y值
 - (void)KylinScrollToChangeHeaderViewHeight:(CGFloat)scrollY{
+//    NSLog(@"%f",scrollY);
+    
     CGFloat offsetY = scrollY - OffsetY;
     CGFloat height = HeaderH - offsetY;
     
@@ -299,6 +308,7 @@ static CGFloat const OffsetY = -200;
         make.left.right.equalTo(self.view);
         make.height.equalTo(@(TitleViewH));
     }];
+
 }
 #pragma mark- ScrollViewDelegate
 
